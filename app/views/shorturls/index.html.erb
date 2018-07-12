@@ -11,9 +11,10 @@
   </thead>
 
   <tbody>
-    <% @shorturls.each do |shorturl| %>
+    <% @shorturls.zip(@shorturls_).each do |shorturl, shorturl_| %>
       <tr>
         <td><%= shorturl.long %></td>
+        <td><%= link_to shorturl_, shorturl_ %></td>
         <td><%= link_to 'Show', shorturl %></td>
         <td><%= link_to 'Edit', edit_shorturl_path(shorturl) %></td>
         <td><%= link_to 'Destroy', shorturl, method: :delete, data: { confirm: 'Are you sure?' } %></td>

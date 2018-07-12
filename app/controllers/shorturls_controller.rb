@@ -5,11 +5,17 @@ class ShorturlsController < ApplicationController
   # GET /shorturls.json
   def index
     @shorturls = Shorturl.all
-  end
-
+    @shorturls_ = Shorturl.all.map do |shorturl|
+      "#{request.protocol}#{request.host_with_port}/foo/#{shorturl.id}"
+    end
+end
   # GET /shorturls/1
   # GET /shorturls/1.json
   def show
+  end
+
+  def foo
+    redirect_to Shorturl.find(params[:id]).long
   end
 
   # GET /shorturls/new
